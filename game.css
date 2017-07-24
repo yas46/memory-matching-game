@@ -1,0 +1,56 @@
+h2 {
+    font-family: Andale Mono, monospace;
+    color: #ccc;
+}
+
+#game-container {
+    display: block;
+    width: 394px;
+    margin: 0 auto;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+}
+
+#result {
+    display: none;
+    width: 300px;
+    margin: 24px auto;
+    color: #628b2d;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.card {
+    padding: 2px;
+}
+
+.fs-btn {
+    background-color:#579936;
+    -moz-border-radius:16px;
+    -webkit-border-radius:16px;
+    border-radius:16px;
+    border:1px solid #18ab29;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:14px;
+    padding:8px 16px;
+    text-decoration:none;
+    margin: auto;
+    letter-spacing: .04em;
+}
+
+.fs-btn:hover {
+	background-color:#407f20;
+}
+
+.fs-btn:active {
+	position:relative;
+	top:1px;
+}
+
+#btn-container {
+    width: 100px;
+    margin: 0 auto;
+    display: none;
+}
