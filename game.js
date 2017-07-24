@@ -14,7 +14,8 @@ jQuery( document ).ready(function( $ ) {
 
     var cards = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16], pairs = 0, pick1 = null, pick2 = null, totalClicks = 0;
     var ArrIndexDiff = cards.length/2;
-
+    
+    //shuffles the cards array 
     function shuffle(array) {
         var m = array.length, t, i;
         while (m) {
@@ -26,7 +27,8 @@ jQuery( document ).ready(function( $ ) {
         console.log(array);
         return array;
     }
-
+    
+    //deactives clicks on found matching cards
     function deactivateButtons() {
         cards.forEach( function(x) {
             $('#c' + x).unbind('click');
@@ -39,7 +41,9 @@ jQuery( document ).ready(function( $ ) {
             });
         }, 2000);
     }
-
+    
+    //displays all the cards face down. 
+    //Adds a call to "clickCard()" when a card is clicked 
     function display(array) {
         array.forEach( function(x) {
             $('#game-container').append('<img class="card" id="c' + x + '" src="/images/card0.jpg">');
@@ -49,8 +53,10 @@ jQuery( document ).ready(function( $ ) {
             $('#c' + x).css('cursor', 'pointer');
         });
     }
-
+    
+    //checks to see if the two slected cards are matching
     function checkPicks() {
+        //if matching - remove click functionality
         if (Math.abs(pick1-pick2) === ArrIndexDiff) {
             $('#c' + pick1).css('opacity', '0');
             $('#c' + pick2).css('opacity', '0');
@@ -58,6 +64,7 @@ jQuery( document ).ready(function( $ ) {
             $('#c' + pick2).unbind('click');
             pairs++;
             console.log(pairs);
+        //if NOT matching - display cards' back
         } else {
             $('#c' + pick1).attr('src', '/images/card0.jpg');
             $('#c' + pick2).attr('src', '/images/card0.jpg');
@@ -66,6 +73,7 @@ jQuery( document ).ready(function( $ ) {
         }
         pick1 = null;
         pick2 = null;
+        //if all cards have been matched display the score (total clicks) and try again button
         if (pairs >= 8) {
             $('#game-container').css('display', 'none');
             $('#num-result').html("<h2>Number of moves: " + totalClicks + "</h2>");
@@ -73,7 +81,8 @@ jQuery( document ).ready(function( $ ) {
             $('#btn-container').css('display', 'block');
         }
     }
-
+    
+    //displays the cards' faces, increments "total clicks" and calls "checkPicks()" after every second click
     function cardClick(num) {
         $('#c' + num).attr('src', '/images/card' + num + '.jpg');
         $('#c' + num).css('cursor', 'default');
